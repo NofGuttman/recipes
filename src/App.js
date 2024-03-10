@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import MainLayout from "./ui/MainLayout";
+import RecipesPage from "./ui/RecipesPage";
+import RecipePage from "./ui/RecipePage";
+import {QueryClientProvider, QueryClient} from 'react-query';
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <MainLayout>
+            <Routes>
+              <Route path="/" exact element={<RecipesPage/>}/>
+              <Route path="/recipe/:recipeId" element={<RecipePage/>}/>
+            </Routes>
+          </MainLayout>
+        </Router>
+      </QueryClientProvider>
     </div>
   );
 }
