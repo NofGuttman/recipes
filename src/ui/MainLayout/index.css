@@ -1,0 +1,15 @@
+.main-layout {
+  min-height: 100vh;
+}
+
+.main-layout-content {
+  /*background-image: url("https://media.istockphoto.com/id/475511846/vector/kitchen-seamless-pattern-vector-background.jpg?s=612x612&w=0&k=20&c=inpW5Mc2MFyuc7PsMXVY49OUBU39EXekcCNe8xVeI_k=");*/
+  /*background-size: 200px;*/
+}
+
+.main-layout-content-section {
+  padding: 24px 12px;
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+}

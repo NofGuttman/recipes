@@ -18,7 +18,7 @@ const RecipeCard = ({title, image, recipeId}) => {
       cover={
         <img
           src={image || imagePlaceHolder}
-          height={200}
+          height={160}
           style={{objectFit: 'cover'}}
         />
       }

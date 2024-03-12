@@ -1,0 +1,11 @@
+
+.main-layout-header {
+  text-align: center;
+}
+
+.main-layout-header h1 {
+    color: white !important;
+    margin: 0;
+    cursor: pointer;
+
+}
