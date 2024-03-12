@@ -1,8 +1,10 @@
 import {useRecipeByIdQuery} from "../../../../queries/recipeQueries";
 import {useParams} from "react-router-dom";
-import {List, Typography} from "antd";
+import {Space, Typography} from "antd";
+import './index.css';
 
 const {Title, Text} = Typography;
+
 const IngredientsSection = () => {
   const {recipeId} = useParams();
   const {data: recipeData} = useRecipeByIdQuery(recipeId);
@@ -11,20 +13,18 @@ const IngredientsSection = () => {
     `${quantity || ""} ${unit || ""} ${name || ""}`
   )
   return (
-    <div>
-      {recipeData?.Components?.map((component) => (
-        <List
-          dir='rtl'
-          header={component?.name}
-          bordered
-          dataSource={component?.Ingredients || []}
-          renderItem={(ingredient) => (
-            <List.Item style={{height: 20}}>
-              {formatIngredient(ingredient)}
-            </List.Item>
-          )}
-        />
-      ))}
+    <div dir="rtl" className='recipe-ingredients-section'>
+      <Title level={3}>מרכיבים</Title>
+      <Space direction='vertical' size={2}>
+        {recipeData?.Components?.map((component) => (
+          <>
+            <Text strong className='recipe-ingredient-component-title'>{component?.name}</Text>
+            {component?.Ingredients?.map((ingredient) => (
+              <Text className='recipe-ingredient-item'>{formatIngredient(ingredient)}</Text>
+            ))}
+          </>
+        ))}
+      </Space>
     </div>
   )
 }
