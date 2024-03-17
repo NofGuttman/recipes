@@ -11,19 +11,19 @@ const RecipePage = () => {
 
   const {recipeId} = useParams();
   const {data: recipeData} = useRecipeByIdQuery(recipeId);
-
+  console.log(recipeData)
   return (
     <div>
       <Divider orientation='right'><Text className='main-title-recipe-name'>{recipeData?.title}</Text></Divider>
       <Row gutter={24}>
-        <Col span={12}>
+        <Col md={12} xs={24}>
           <img
             height={300}
             style={{objectFit: 'cover', width: '100%'}}
             src={recipeData?.image}
           />
         </Col>
-        <Col span={12}>
+        <Col md={12} xs={24}>
           <IngredientsSection/>
         </Col>
       </Row>

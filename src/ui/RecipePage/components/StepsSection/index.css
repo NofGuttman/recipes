@@ -1,3 +1,11 @@
 .recipe-steps-component-title, .recipe-step-item {
     font-size: 16px;
 }
+
+.recipe-step-item-index {
+    border: 1px solid grey;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    text-align: center;
+}

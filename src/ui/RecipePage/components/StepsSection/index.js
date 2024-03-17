@@ -12,15 +12,21 @@ const StepsSection = () => {
   return (
     <div dir="rtl" className='recipe-steps-section'>
       <Title level={3}>אופן ההכנה</Title>
-      <Space direction='vertical' size={2}>
-        {recipeData?.Components?.map((component) => (
-          <>
-            <Text strong className='recipe-steps-component-title'>{component?.name}</Text>
-            {component?.Steps?.map((step) => (
-              <Text className='recipe-step-item'>{step?.description}</Text>
-            ))}
-          </>
-        ))}
+      <Space direction='vertical' size={6}>
+        {recipeData?.components?.map((component) => {
+          const steps = component?.steps?.sort((a, b) => a.order - b.order);
+          return(
+            <>
+              <Text strong className='recipe-steps-component-title'>{component?.name}</Text>
+              {steps.map((step, i) => (
+                <Space>
+                  <div className='recipe-step-item-index'>{i+1}</div>
+                  <Text className='recipe-step-item'>{step?.description}</Text>
+                </Space>
+              ))}
+            </>
+          )
+        })}
       </Space>
     </div>
   )
