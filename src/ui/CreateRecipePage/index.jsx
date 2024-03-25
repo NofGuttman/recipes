@@ -1,5 +1,6 @@
-import {Button, Col, Form, Input, InputNumber, Row, Typography} from "antd";
+import {Button, Form, Space, Typography} from "antd";
 import RecipeComponentFormSection from "./RecipeComponentFormSection";
+import RecipeDetailsFormSection from "./RecipeDetailsFormSection";
 
 const {Title} = Typography;
 
@@ -10,8 +11,10 @@ const CreateRecipePage = () => {
   }
 
   const initialValues = {
-    ingredients: [{}],
-    steps: [{}],
+    recipeComponents: [{
+      ingredients: [{}],
+      steps: [{}],
+    }],
   }
 
   return (
@@ -22,10 +25,13 @@ const CreateRecipePage = () => {
       onFinish={onSubmit}
       initialValues={initialValues}
     >
-      <RecipeComponentFormSection />
-      <Button htmlType='submit'>
-        שמור
-      </Button>
+      <Space direction='vertical'>
+        <RecipeDetailsFormSection/>
+        <RecipeComponentFormSection/>
+        <Button htmlType='submit'>
+          שמור
+        </Button>
+      </Space>
     </Form>
   );
 }
