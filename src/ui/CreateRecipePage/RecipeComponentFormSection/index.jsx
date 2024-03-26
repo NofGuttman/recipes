@@ -8,9 +8,10 @@ const RecipeComponentFormSection = () => (
   <div className='component-form-section'>
     <Form.List name='recipeComponents'>
       {(componentFields, {add: addComponent, remove: removeComponent}) => (
-        <Space direction='vertical'>
+        <Space size={20} direction='vertical'>
           {componentFields.map((componentField, index) => (
             <Card
+              className='create-recipe-form-card'
               title={`שלב  במתכון - ${index+1}`}
               extra={componentFields.length > 1 && (
                 <Button danger onClick={() => removeComponent(componentField.name)}>מחק שלב</Button>
