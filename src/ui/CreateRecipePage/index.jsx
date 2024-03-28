@@ -1,12 +1,14 @@
 import {Button, Form, Space} from "antd";
 import RecipeComponentFormSection from "./RecipeComponentFormSection";
 import RecipeDetailsFormSection from "./RecipeDetailsFormSection";
+import {useCreateRecipeMutation} from "../../mutations/recipeMutations";
 import './index.css';
 
 const CreateRecipePage = () => {
   const [form] = Form.useForm();
+  const {mutate: mutateCreateRecipe} = useCreateRecipeMutation();
   const onSubmit = (values) => {
-    console.log(values);
+    mutateCreateRecipe(values);
   }
 
   const initialValues = {
