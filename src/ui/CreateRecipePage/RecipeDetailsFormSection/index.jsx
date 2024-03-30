@@ -6,11 +6,11 @@ const RecipeDetailsFormSection = () => (
   <div className='recipe-details'>
     <Card title='פרטים כלליים' className='create-recipe-form-card'>
       <Text>שם המתכון</Text>
-      <Form.Item name='recipeTitle' rules={[requiredFieldRule]}>
+      <Form.Item name='title' rules={[requiredFieldRule]}>
         <Input/>
       </Form.Item>
       <Text>פירוט</Text>
-      <Form.Item name='recipeDescription'>
+      <Form.Item name='description'>
         <Input/>
       </Form.Item>
       <Row gutter={16}>

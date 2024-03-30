@@ -8,13 +8,45 @@ const CreateRecipePage = () => {
   const [form] = Form.useForm();
   const {mutate: mutateCreateRecipe} = useCreateRecipeMutation();
   const onSubmit = (values) => {
-    mutateCreateRecipe(values);
+    const components = values?.components?.map((component) => {
+      const ingredients = component?.ingredients?.map(({name, quantity, unit}) => ({name, quantity, unit}));
+      const steps = component?.steps?.map(({description}) => ({description}));
+
+      return {
+        name: component.name,
+        steps,
+        ingredients
+      };
+    })
+
+    mutateCreateRecipe({...values, components });
   }
 
   const initialValues = {
-    recipeComponents: [{
-      ingredients: [{}],
-      steps: [{}],
+    components: [{
+      name: 'אורז טעים',
+      ingredients: [
+        {
+          name: 'אחד',
+          quantity: 200,
+          unit: 'גרם',
+        },
+        {
+          name: 'שתיים',
+          quantity: 5,
+        }
+      ],
+      steps: [
+        {
+          description: 'מכינים את האורז'
+        },
+        {
+          description: 'מצלחתיפ את האורז'
+        },
+        {
+          description: 'מגישיפ באהבה'
+        }
+      ],
     }],
   }
 

@@ -6,7 +6,7 @@ const {TextArea} = Input;
 
 const RecipeComponentFormSection = () => (
   <div className='component-form-section'>
-    <Form.List name='recipeComponents'>
+    <Form.List name='components'>
       {(componentFields, {add: addComponent, remove: removeComponent}) => (
         <Space size={20} direction='vertical'>
           {componentFields.map((componentField, index) => (
@@ -18,7 +18,7 @@ const RecipeComponentFormSection = () => (
               )}
             >
               <Text>שם שלב במתכון</Text>
-              <Form.Item name={[componentField.name, 'componentName']} rules={[requiredFieldRule]}>
+              <Form.Item name={[componentField.name, 'name']} rules={[requiredFieldRule]}>
                 <Input/>
               </Form.Item>
               <Title level={5}>רכיבים</Title>
@@ -70,7 +70,7 @@ const RecipeComponentFormSection = () => (
                     {stepFields.map((stepField) => (
                       <Row gutter={16}>
                         <Col flex='auto'>
-                          <Form.Item name={[stepField.name, 'name']} rules={[requiredFieldRule]}>
+                          <Form.Item name={[stepField.name, 'description']} rules={[requiredFieldRule]}>
                             <TextArea rows={2}/>
                           </Form.Item>
                         </Col>
